@@ -1,0 +1,16 @@
+{
+  "name": "hjm-lab",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "description": "HJ Miranda portfolio rebuilt as headless WordPress + Astro.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "build:offline": "WP_OFFLINE=1 astro build"
+  },
+  "dependencies": {
+    "astro": "^7.4.11"
+  }
+}

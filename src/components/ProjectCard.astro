@@ -1,0 +1,41 @@
+---
+import type { Project } from "../lib/wp";
+import { slugify } from "../lib/wp";
+
+interface Props {
+  project: Project;
+  eager?: boolean;
+}
+
+const { project: p, eager = false } = Astro.props;
+const href = `/work/${p.slug}/`;
+const filterKeys = p.platforms.map(slugify).join(" ");
+const kindLabel = p.kind === "nda" ? "Under NDA" : p.kind === "case-study" ? "Case study" : "";
+---
+<article class:list={["card", { "card--dark": !p.image }]} data-p={filterKeys}>
+  {kindLabel && p.image && <span class="kind"><span class="tag">{kindLabel}</span></span>}
+  {p.image && (
+    <div class="card__media">
+      <img
+        src={p.image.large || p.image.url}
+        alt={p.image.alt || p.title}
+        width="1024"
+        height="640"
+        loading={eager ? "eager" : "lazy"}
+        decoding="async"
+      />
+    </div>
+  )}
+  <div class="card__body">
+    {!p.image && <span class="eyebrow" style="padding-top:28px">{kindLabel}</span>}
+    <h3 class="h3 card__title"><a href={href}>{p.title}</a></h3>
+    <p>{p.summary}</p>
+    <ul class="tags">
+      {p.tags.slice(0, 3).map((t) => <li class="tag">{t}</li>)}
+    </ul>
+  </div>
+  <div class="card__foot">
+    <span class="mono muted">{p.platforms.join(" · ")}</span>
+    <span aria-hidden="true">→</span>
+  </div>
+</article>

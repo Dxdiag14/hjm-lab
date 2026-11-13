@@ -1,0 +1,13 @@
+{
+  "note": "Fill in the Astro column after launch (PageSpeed Insights, mobile, Work page). Leave a value as null to show 'Measuring after launch'.",
+  "rows": [
+    { "metric": "Mobile PageSpeed score", "wordpress": "98", "astro": null },
+    { "metric": "Largest Contentful Paint", "wordpress": "2.1 s", "astro": null },
+    { "metric": "Total Blocking Time", "wordpress": "0 ms", "astro": null },
+    { "metric": "JavaScript sent to the browser", "wordpress": null, "astro": "0 KB of my own (no framework runtime)" },
+    { "metric": "Requests on first load", "wordpress": null, "astro": null },
+    { "metric": "Total page weight", "wordpress": null, "astro": null },
+    { "metric": "Hosting", "wordpress": "PHP hosting + database", "astro": "Free static hosting (Cloudflare Pages)" },
+    { "metric": "Changing a project", "wordpress": "Edit in Elementor, publish", "astro": "Edit fields in WordPress, publish, site rebuilds in about a minute" }
+  ]
+}

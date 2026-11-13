@@ -1,0 +1,352 @@
+[
+ {
+  "id": 2629,
+  "slug": "healthcare-med-spa-sites",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 0,
+  "title": {
+   "rendered": "Healthcare &#038; med spa sites"
+  },
+  "excerpt": {
+   "rendered": "<p>Elementor builds from Figma for U.S. medical spa, wellness and healthcare clients, with custom code, technical SEO, schema, speed and QA. Confidential, but I’m happy to walk you through them on a call.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Elementor builds from Figma for U.S. medical spa, wellness and healthcare clients, with custom code, technical SEO, schema, speed and QA. Confidential, but I’m happy to walk you through them on a call.</p>"
+  },
+  "meta": {
+   "hjm_url": "",
+   "hjm_tags": "WordPress, Elementor, Schema, Core Web Vitals",
+   "hjm_kind": "nda"
+  },
+  "hjm_image": null,
+  "hjm_platforms": [
+   "WordPress"
+  ]
+ },
+ {
+  "id": 2630,
+  "slug": "hiller-commercial-floors",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 1,
+  "title": {
+   "rendered": "Hiller Commercial Floors"
+  },
+  "excerpt": {
+   "rendered": "<p>Elementor and WooCommerce build for a commercial flooring company. The product pages are almost all custom code, plus quote and estimate requests across the site.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Elementor and WooCommerce build for a commercial flooring company. The product pages are almost all custom code, plus quote and estimate requests across the site.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.hillerfloors.com/",
+   "hjm_tags": "WooCommerce, Elementor, Custom PHP",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/Hiller-Commercial-Floors.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/Hiller-Commercial-Floors-1024x310.webp",
+   "width": 2552,
+   "height": 773,
+   "alt": "Hiller Commercial Floors website built with Elementor and WooCommerce"
+  },
+  "hjm_platforms": [
+   "WooCommerce",
+   "WordPress"
+  ]
+ },
+ {
+  "id": 2631,
+  "slug": "ronald-mcdonald-house-mn-wi",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 2,
+  "title": {
+   "rendered": "Ronald McDonald House MN &#038; WI"
+  },
+  "excerpt": {
+   "rendered": "<p>Full Elementor build with mega menu, donation and volunteer flows, and accessible, descriptive image alt text throughout.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Full Elementor build with mega menu, donation and volunteer flows, and accessible, descriptive image alt text throughout.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.ronaldmcdonaldhousemnwi.org/",
+   "hjm_tags": "WordPress, Elementor, Nonprofit",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/Ronald-McDonald-House-MN-WI.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/Ronald-McDonald-House-MN-WI-1024x503.webp",
+   "width": 2552,
+   "height": 1253,
+   "alt": "Ronald McDonald House of Minnesota & Western Wisconsin website homepage"
+  },
+  "hjm_platforms": [
+   "WordPress"
+  ]
+ },
+ {
+  "id": 2632,
+  "slug": "storemapper",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 3,
+  "title": {
+   "rendered": "Storemapper"
+  },
+  "excerpt": {
+   "rendered": "<p>Webflow marketing site for a store locator app. I built most of the pages and much of the site’s custom functionality.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Webflow marketing site for a store locator app. I built most of the pages and much of the site’s custom functionality.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.storemapper.com/",
+   "hjm_tags": "Webflow, CMS, SaaS",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/Storemapper.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/Storemapper-1024x353.webp",
+   "width": 2552,
+   "height": 879,
+   "alt": "Storemapper store locator website built in Webflow"
+  },
+  "hjm_platforms": [
+   "Webflow"
+  ]
+ },
+ {
+  "id": 2633,
+  "slug": "large-jewelry-store-speed-overhaul",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 4,
+  "title": {
+   "rendered": "Large jewelry store speed overhaul"
+  },
+  "excerpt": {
+   "rendered": "<p>Audited a slow WooCommerce store, removed heavy plugins, optimized images and scripts, and rebuilt key templates in PHP. Load time went from 6s to 2.5s, and conversions rose 12%.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Audited a slow WooCommerce store, removed heavy plugins, optimized images and scripts, and rebuilt key templates in PHP. Load time went from 6s to 2.5s, and conversions rose 12%.</p>"
+  },
+  "meta": {
+   "hjm_url": "",
+   "hjm_tags": "WooCommerce, Speed, PHP",
+   "hjm_kind": "case-study"
+  },
+  "hjm_image": null,
+  "hjm_platforms": [
+   "WooCommerce"
+  ]
+ },
+ {
+  "id": 2634,
+  "slug": "gregory-euclide",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 5,
+  "title": {
+   "rendered": "Gregory Euclide"
+  },
+  "excerpt": {
+   "rendered": "<p>Portfolio and print shop for a Minnesota artist: a works gallery sorted by medium and a WooCommerce store for prints.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Portfolio and print shop for a Minnesota artist: a works gallery sorted by medium and a WooCommerce store for prints.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.gregoryeuclide.com/",
+   "hjm_tags": "WordPress, Elementor, WooCommerce",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/Gregory-Euclide.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/Gregory-Euclide-1024x277.webp",
+   "width": 1440,
+   "height": 390,
+   "alt": "Gregory Euclide artist portfolio and print shop website"
+  },
+  "hjm_platforms": [
+   "WooCommerce",
+   "WordPress"
+  ]
+ },
+ {
+  "id": 2635,
+  "slug": "ibew-local-343",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 6,
+  "title": {
+   "rendered": "IBEW Local 343"
+  },
+  "excerpt": {
+   "rendered": "<p>Full build for a southern Minnesota electricians’ union, with events, a members-only login and member resources.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Full build for a southern Minnesota electricians’ union, with events, a members-only login and member resources.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.ibewlocal343.org/",
+   "hjm_tags": "WordPress, Elementor, Union",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/IBEW-Local-343.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/IBEW-Local-343-1024x321.webp",
+   "width": 2552,
+   "height": 800,
+   "alt": "IBEW Local 343 union website homepage"
+  },
+  "hjm_platforms": [
+   "WordPress"
+  ]
+ },
+ {
+  "id": 2636,
+  "slug": "meetedgar",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 7,
+  "title": {
+   "rendered": "MeetEdgar"
+  },
+  "excerpt": {
+   "rendered": "<p>Ongoing Webflow work for a SaaS marketing site: CMS collections, responsive page builds and on-page SEO.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Ongoing Webflow work for a SaaS marketing site: CMS collections, responsive page builds and on-page SEO.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://meetedgar.com/",
+   "hjm_tags": "Webflow, CMS, SaaS",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/MeetEdgar.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/MeetEdgar-1024x466.webp",
+   "width": 2552,
+   "height": 1161,
+   "alt": "MeetEdgar SaaS marketing website built in Webflow"
+  },
+  "hjm_platforms": [
+   "Webflow"
+  ]
+ },
+ {
+  "id": 2637,
+  "slug": "bordelons-plumbing",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 8,
+  "title": {
+   "rendered": "Bordelon’s Plumbing"
+  },
+  "excerpt": {
+   "rendered": "<p>Full Squarespace build for a Rochester, MN plumber, with residential and commercial service pages and estimate requests.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Full Squarespace build for a Rochester, MN plumber, with residential and commercial service pages and estimate requests.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.bordelonsplumbing.com/",
+   "hjm_tags": "Squarespace, Custom CSS/JS, Local business",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/Bordelons-Plumbing.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/Bordelons-Plumbing-1024x541.webp",
+   "width": 1440,
+   "height": 761,
+   "alt": "Bordelon's Plumbing website built in Squarespace"
+  },
+  "hjm_platforms": [
+   "Squarespace"
+  ]
+ },
+ {
+  "id": 2638,
+  "slug": "dc-kettlebell-club",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 9,
+  "title": {
+   "rendered": "DC Kettlebell Club"
+  },
+  "excerpt": {
+   "rendered": "<p>Conversion-focused landing site built around one goal: booking a free consultation, with clear packages and member testimonials.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Conversion-focused landing site built around one goal: booking a free consultation, with clear packages and member testimonials.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://dckettlebellclub.com/",
+   "hjm_tags": "WordPress, Elementor, Fitness",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/DC-Kettlebell-Club.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/DC-Kettlebell-Club-1024x538.webp",
+   "width": 1440,
+   "height": 757,
+   "alt": "DC Kettlebell Club landing page"
+  },
+  "hjm_platforms": [
+   "WordPress"
+  ]
+ },
+ {
+  "id": 2639,
+  "slug": "csell",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 10,
+  "title": {
+   "rendered": "Csell"
+  },
+  "excerpt": {
+   "rendered": "<p>Webflow work on a Shopify app’s marketing site: new pages, new features and new client entries.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Webflow work on a Shopify app’s marketing site: new pages, new features and new client entries.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.csell.io/",
+   "hjm_tags": "Webflow, SaaS",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/Csell.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/Csell-1024x318.webp",
+   "width": 2552,
+   "height": 793,
+   "alt": "Csell Shopify app marketing website built in Webflow"
+  },
+  "hjm_platforms": [
+   "Webflow"
+  ]
+ },
+ {
+  "id": 2640,
+  "slug": "by-design-coaching",
+  "modified": "2026-11-13T08:33:25",
+  "menu_order": 11,
+  "title": {
+   "rendered": "By Design Coaching"
+  },
+  "excerpt": {
+   "rendered": "<p>Squarespace site extended with custom CSS and scripts for section layouts the default templates couldn’t handle.</p>\n"
+  },
+  "content": {
+   "rendered": "<p class=\"wp-block-paragraph\">Squarespace site extended with custom CSS and scripts for section layouts the default templates couldn’t handle.</p>"
+  },
+  "meta": {
+   "hjm_url": "https://www.bydesigncoaching.net/",
+   "hjm_tags": "Squarespace, Custom CSS/JS",
+   "hjm_kind": "public"
+  },
+  "hjm_image": {
+   "url": "https://hjmiranda.com/wp-content/uploads/2026/10/By-Design-Coaching.webp",
+   "large": "https://hjmiranda.com/wp-content/uploads/2026/10/By-Design-Coaching-1024x553.webp",
+   "width": 1440,
+   "height": 777,
+   "alt": "By Design Coaching website built in Squarespace"
+  },
+  "hjm_platforms": [
+   "Squarespace"
+  ]
+ }
+]

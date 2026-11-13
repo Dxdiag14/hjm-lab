@@ -1,0 +1,132 @@
+---
+import Base from "../layouts/Base.astro";
+import results from "../data/results.json";
+import { getProjects } from "../lib/wp";
+
+const projects = await getProjects();
+const builtAt = new Date().toLocaleString("en-US", { month: "short", day: "numeric", year: "numeric", hour: "numeric", minute: "2-digit", timeZone: "Asia/Manila", timeZoneName: "short" });
+const codeHtml = `<span class="c">// src/lib/wp.ts (simplified)</span>
+const API = <span class="s">"https://hjmiranda.com/wp-json/wp/v2"</span>;
+
+export async function getProjects() {
+  const res = await fetch(
+    \`\${API}/projects?per_page=100&orderby=menu_order\`
+  );
+  const raw = await res.json();
+  return raw.map(toProject);
+}
+
+<span class="c">// src/pages/work/[slug].astro</span>
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}`;
+---
+<Base
+  title="How it’s built – Headless WordPress with Astro | HJM Lab"
+  description="How this site works: WordPress as a headless CMS, the REST API, an Astro static build, Cloudflare Pages and a deploy hook that rebuilds on publish. Plus a speed comparison with the WordPress version."
+>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow rise">How it’s built</span>
+      <h1 class="display rise">WordPress writes it. <span class="accent">Astro builds it.</span></h1>
+      <p class="lead rise">
+        “Headless” means WordPress only stores and edits the content. It doesn’t make the pages anymore.
+        Astro takes over that job, once, at build time, and the finished HTML is served from a CDN.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--dark">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">01 — The pipeline</span>
+          <h2 class="h2">From “Publish” to a live page</h2>
+        </div>
+      </div>
+      <ol class="flow">
+        <li>
+          <h3>Edit in WordPress</h3>
+          <p>Projects are a custom post type with plain fields: title, summary, platforms, tags, live URL and a screenshot.</p>
+        </li>
+        <li>
+          <h3>REST API</h3>
+          <p>WordPress serves the content as JSON at <code>/wp-json/wp/v2/projects</code>, with the image and platform names ready to use.</p>
+        </li>
+        <li>
+          <h3>Astro build</h3>
+          <p>Astro fetches that JSON once and writes a static HTML page for every project. No JavaScript framework ships to the browser.</p>
+        </li>
+        <li>
+          <h3>CDN + rebuild hook</h3>
+          <p>The files go to Cloudflare Pages. When I publish in WordPress, a deploy hook rebuilds the site automatically.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        <span class="eyebrow">02 — The code</span>
+        <h2 class="h2">The whole data layer is one fetch</h2>
+        <p>
+          Every page gets its content from a single function. It runs at build time on the server, so visitors
+          never wait for an API call, and WordPress could even go offline without taking this site down.
+        </p>
+        <p>
+          The filters on the Work page don’t use JavaScript either. They’re radio buttons and the CSS
+          <code>:has()</code> selector.
+        </p>
+      </div>
+      <pre class="code"><code set:html={codeHtml} /></pre>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="wrap">
+      <div class="section-head">
+        <div>
+          <span class="eyebrow">03 — The results</span>
+          <h2 class="h2">WordPress vs. Astro, same content</h2>
+        </div>
+        <p class="muted" style="max-width:420px">Measured with PageSpeed Insights on mobile. Numbers I haven’t measured yet say so.</p>
+      </div>
+      <div style="overflow-x:auto">
+        <table class="table">
+          <caption>Work page, mobile</caption>
+          <thead>
+            <tr><th scope="col">Metric</th><th scope="col">WordPress + Elementor</th><th scope="col">Astro (headless)</th></tr>
+          </thead>
+          <tbody>
+            {results.rows.map((r) => (
+              <tr>
+                <td>{r.metric}</td>
+                <td class:list={{ tbd: !r.wordpress }}>{r.wordpress ?? "Measuring after launch"}</td>
+                <td class:list={{ tbd: !r.astro }}>{r.astro ?? "Measuring after launch"}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap two">
+      <div class="stack">
+        <span class="eyebrow">04 — Trade-offs</span>
+        <h2 class="h2">When I’d pick each one</h2>
+      </div>
+      <div class="stack">
+        <p><strong>WordPress + Elementor</strong> is still the right call when a client’s team needs to design and rearrange pages themselves, or needs plugins like WooCommerce, memberships or forms with no extra setup.</p>
+        <p><strong>Headless with Astro</strong> fits content-heavy marketing sites, docs and portfolios where speed and security matter most, and where layouts are set once by a developer while editors only change content.</p>
+        <p class="muted">This build: {projects.length} projects from WordPress · last built {builtAt}.</p>
+      </div>
+    </div>
+  </section>
+</Base>

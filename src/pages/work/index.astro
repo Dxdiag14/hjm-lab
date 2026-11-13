@@ -1,0 +1,62 @@
+---
+import Base from "../../layouts/Base.astro";
+import ProjectCard from "../../components/ProjectCard.astro";
+import { getProjects, platformCounts } from "../../lib/wp";
+
+const projects = await getProjects();
+const platforms = platformCounts(projects);
+
+// Filters work without JavaScript: each radio button hides the cards
+// that don't carry its platform (CSS :has()).
+const filterCss = platforms
+  .map((p) => `.work:has(#f-${p.key}:checked) .card:not([data-p~="${p.key}"]){display:none}`)
+  .join("\n");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "Website projects by HJ Miranda",
+  numberOfItems: projects.length,
+  itemListElement: projects.map((p, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    url: `https://lab.hjmiranda.com/work/${p.slug}/`,
+    name: p.title
+  }))
+};
+---
+<Base
+  title="Work – Every site I’ve built and shipped | HJM Lab"
+  description="WordPress, WooCommerce, Webflow and Squarespace projects by HJ Miranda, served from headless WordPress through Astro."
+  jsonLd={jsonLd}
+>
+  <style set:html={filterCss}></style>
+
+  <section class="hero" style="padding-bottom:40px">
+    <div class="wrap">
+      <span class="eyebrow rise">Work · {projects.length} projects</span>
+      <h1 class="display rise">Every site I’ve built and shipped</h1>
+      <p class="lead rise">WordPress and Elementor builds for U.S. agencies, plus Webflow and Squarespace work. Filter by platform, or open a project for details.</p>
+    </div>
+  </section>
+
+  <section class="work" style="padding-bottom:104px">
+    <div class="wrap">
+      <fieldset class="filters">
+        <legend>Filter projects by platform</legend>
+        <input type="radio" name="platform" id="f-all" checked />
+        <label for="f-all">All <span class="count">{projects.length}</span></label>
+        {platforms.map((p) => (
+          <>
+            <input type="radio" name="platform" id={`f-${p.key}`} />
+            <label for={`f-${p.key}`}>{p.name} <span class="count">{p.count}</span></label>
+          </>
+        ))}
+      </fieldset>
+
+      <div class="grid">
+        {projects.map((p, i) => <ProjectCard project={p} eager={i < 3} />)}
+      </div>
+    </div>
+  </section>
+</Base>

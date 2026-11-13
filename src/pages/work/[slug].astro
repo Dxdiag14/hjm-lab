@@ -1,0 +1,95 @@
+---
+import Base from "../../layouts/Base.astro";
+import { getProjects, type Project } from "../../lib/wp";
+
+export async function getStaticPaths() {
+  const projects = await getProjects();
+  return projects.map((project, i) => ({
+    params: { slug: project.slug },
+    props: {
+      project,
+      prev: projects[i - 1] ?? null,
+      next: projects[i + 1] ?? null
+    }
+  }));
+}
+
+interface Props {
+  project: Project;
+  prev: Project | null;
+  next: Project | null;
+}
+
+const { project: p, prev, next } = Astro.props;
+const kindLabel = p.kind === "nda" ? "Under NDA" : p.kind === "case-study" ? "Case study" : "Live project";
+const updated = new Date(p.modified).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CreativeWork",
+  name: p.title,
+  description: p.summary,
+  ...(p.url ? { url: p.url } : {}),
+  ...(p.image ? { image: p.image.url } : {}),
+  creator: { "@type": "Person", name: "HJ Miranda", url: "https://hjmiranda.com/" },
+  keywords: [...p.platforms, ...p.tags].join(", ")
+};
+---
+<Base
+  title={`${p.title} – ${p.platforms.join(", ")} project | HJM Lab`}
+  description={p.summary.length > 155 ? p.summary.slice(0, 152).replace(/\s+\S*$/, "") + "…" : p.summary}
+  image={p.image?.url}
+  jsonLd={jsonLd}
+>
+  <section class="project-hero">
+    <div class="wrap">
+      <nav class="crumbs rise" aria-label="Breadcrumb"><a href="/work/">Work</a> / {p.title}</nav>
+      <span class="eyebrow rise">{kindLabel} · {p.platforms.join(" · ")}</span>
+      <h1 class="display rise">{p.title}</h1>
+      <ul class="tags rise">
+        {p.tags.map((t) => <li class="tag">{t}</li>)}
+      </ul>
+    </div>
+  </section>
+
+  <div class="wrap">
+    {p.image ? (
+      <figure class="shot" style="margin:0">
+        <img
+          src={p.image.url}
+          srcset={`${p.image.large} 1024w, ${p.image.url} ${p.image.width}w`}
+          sizes="(max-width: 1208px) 100vw, 1160px"
+          alt={p.image.alt || p.title}
+          width={p.image.width}
+          height={p.image.height}
+          fetchpriority="high"
+        />
+      </figure>
+    ) : (
+      <div class="shot shot--placeholder">
+        {p.kind === "nda" ? "Client work under NDA · I’m happy to walk you through it on a call" : "Screenshots available on request"}
+      </div>
+    )}
+
+    <div class="project-body">
+      <div class="prose" set:html={p.html} />
+      <dl class="facts">
+        <div><dt>Platform</dt><dd>{p.platforms.join(", ")}</dd></div>
+        <div><dt>Built with</dt><dd>{p.tags.join(", ")}</dd></div>
+        <div><dt>Status</dt><dd>{kindLabel}</dd></div>
+        {p.url && (
+          <div>
+            <dt>Live site</dt>
+            <dd><a class="text-link" href={p.url} rel="noopener" target="_blank">{new URL(p.url).hostname.replace(/^www\./, "")} <span class="ne" aria-hidden="true">↗</span></a></dd>
+          </div>
+        )}
+        <div><dt>Content updated</dt><dd>{updated} in WordPress</dd></div>
+      </dl>
+    </div>
+
+    <nav class="pager" aria-label="More projects">
+      {prev ? <a href={`/work/${prev.slug}/`}><span class="mono">← Previous</span><span>{prev.title}</span></a> : <span />}
+      {next ? <a href={`/work/${next.slug}/`} style="text-align:right"><span class="mono">Next →</span><span>{next.title}</span></a> : <span />}
+    </nav>
+  </div>
+</Base>

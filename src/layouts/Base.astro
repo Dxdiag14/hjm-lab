@@ -1,0 +1,82 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { title, description, image = "https://hjmiranda.com/wp-content/uploads/2026/10/og-image-1200x630-1.jpg", jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const path = Astro.url.pathname;
+const current = (href: string) => (href === "/" ? path === "/" : path.startsWith(href)) ? "page" : undefined;
+const year = new Date().getFullYear();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/Geist-Regular.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/Geist-SemiBold.woff2" as="font" type="font/woff2" crossorigin />
+    <meta name="theme-color" content="#FFFFFF" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="HJM Lab" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {jsonLd && <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="brand" href="/" aria-label="HJM Lab home">
+          <img src="/logo.svg" alt="HJ Miranda" width="140" height="36" />
+          <span class="lab">lab</span>
+        </a>
+        <nav class="nav" aria-label="Main">
+          <a href="/work/" aria-current={current("/work/")}>Work</a>
+          <a href="/how-its-built/" aria-current={current("/how-its-built/")} class="hide-sm">How it’s built</a>
+          <a class="pill" href="https://hjmiranda.com/#contact">Let’s talk</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <section class="section section--dark cta">
+      <div class="wrap">
+        <div class="stack">
+          <span class="eyebrow">Next project</span>
+          <h2>Have a site to build or fix?</h2>
+          <p class="lead">WordPress, headless or both. I reply within one business day.</p>
+        </div>
+        <div class="btns">
+          <a class="btn btn--light" href="https://hjmiranda.com/#contact">Let’s talk <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <span>© {year} HJ Miranda · Built with Astro, content from WordPress</span>
+        <nav aria-label="Footer">
+          <a href="https://hjmiranda.com/">hjmiranda.com</a>
+          <a href="https://github.com/Dxdiag14">GitHub</a>
+          <a href="https://www.linkedin.com/in/hj-miranda-b20039204/">LinkedIn</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
