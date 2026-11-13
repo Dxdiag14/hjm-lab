@@ -24,6 +24,8 @@ export interface Project {
   html: string;
   order: number;
   url: string;
+  caseUrl: string;
+  metric: string;
   kind: Kind;
   tags: string[];
   platforms: string[];
@@ -45,7 +47,7 @@ interface WpProject {
   title: { rendered: string };
   excerpt: { rendered: string };
   content: { rendered: string };
-  meta?: { hjm_url?: string; hjm_tags?: string; hjm_kind?: string };
+  meta?: { hjm_url?: string; hjm_tags?: string; hjm_kind?: string; hjm_case_url?: string; hjm_metric?: string };
   hjm_image: Project["image"];
   hjm_platforms: string[];
 }
@@ -76,6 +78,8 @@ function toProject(p: WpProject): Project {
     html: p.content.rendered,
     order: p.menu_order ?? 0,
     url: p.meta?.hjm_url || "",
+    caseUrl: p.meta?.hjm_case_url || "",
+    metric: p.meta?.hjm_metric || "",
     kind: ["public", "nda", "case-study"].includes(kind) ? kind : "public",
     tags: (p.meta?.hjm_tags || "").split(",").map((t) => t.trim()).filter(Boolean),
     platforms: p.hjm_platforms || [],

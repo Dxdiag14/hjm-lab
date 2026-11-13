@@ -1,13 +1,55 @@
 {
-  "note": "Fill in the Astro column after launch (PageSpeed Insights, mobile, Work page). Leave a value as null to show 'Measuring after launch'.",
+  "note": "PageSpeed Insights (Lighthouse 13.6, mobile, Slow 4G) on the Work page of each site, Nov 13, 2026. Sizes are uncompressed bytes of the HTML and the CSS/JS it loads up front.",
   "rows": [
-    { "metric": "Mobile PageSpeed score", "wordpress": "98", "astro": null },
-    { "metric": "Largest Contentful Paint", "wordpress": "2.1 s", "astro": null },
-    { "metric": "Total Blocking Time", "wordpress": "0 ms", "astro": null },
-    { "metric": "JavaScript sent to the browser", "wordpress": null, "astro": "0 KB of my own (no framework runtime)" },
-    { "metric": "Requests on first load", "wordpress": null, "astro": null },
-    { "metric": "Total page weight", "wordpress": null, "astro": null },
-    { "metric": "Hosting", "wordpress": "PHP hosting + database", "astro": "Free static hosting (Cloudflare Pages)" },
-    { "metric": "Changing a project", "wordpress": "Edit in Elementor, publish", "astro": "Edit fields in WordPress, publish, site rebuilds in about a minute" }
+    {
+      "metric": "Mobile PageSpeed score",
+      "wordpress": "100",
+      "astro": "100"
+    },
+    {
+      "metric": "First Contentful Paint",
+      "wordpress": "1.0 s",
+      "astro": "0.8 s"
+    },
+    {
+      "metric": "Largest Contentful Paint",
+      "wordpress": "1.0 s",
+      "astro": "0.8 s"
+    },
+    {
+      "metric": "Speed Index",
+      "wordpress": "2.4 s",
+      "astro": "0.8 s"
+    },
+    {
+      "metric": "Total Blocking Time",
+      "wordpress": "0 ms",
+      "astro": "0 ms"
+    },
+    {
+      "metric": "HTML size",
+      "wordpress": "83 KB",
+      "astro": "29 KB"
+    },
+    {
+      "metric": "CSS on first load",
+      "wordpress": "135 KB (combined by LiteSpeed)",
+      "astro": "13 KB (inlined)"
+    },
+    {
+      "metric": "JavaScript on first load",
+      "wordpress": "17 KB loader; the rest is delayed until the visitor interacts",
+      "astro": "0 KB"
+    },
+    {
+      "metric": "Hosting",
+      "wordpress": "PHP hosting + database (Hostinger)",
+      "astro": "Free static hosting (Cloudflare Pages)"
+    },
+    {
+      "metric": "Changing a project",
+      "wordpress": "Edit in Elementor, publish",
+      "astro": "Edit fields in WordPress, publish, rebuilds in about a minute"
+    }
   ]
 }

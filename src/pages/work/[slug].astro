@@ -72,7 +72,15 @@ const jsonLd = {
     )}
 
     <div class="project-body">
-      <div class="prose" set:html={p.html} />
+      <div class="stack">
+        <div class="prose" set:html={p.html} />
+        {p.metric && <p class="h3 accent">{p.metric}</p>}
+        {p.caseUrl && (
+          <div class="btns">
+            <a class="btn" href={p.caseUrl}>Read the full case study <span class="arrow" aria-hidden="true">→</span></a>
+          </div>
+        )}
+      </div>
       <dl class="facts">
         <div><dt>Platform</dt><dd>{p.platforms.join(", ")}</dd></div>
         <div><dt>Built with</dt><dd>{p.tags.join(", ")}</dd></div>

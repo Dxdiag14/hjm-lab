@@ -29,6 +29,7 @@ const kindLabel = p.kind === "nda" ? "Under NDA" : p.kind === "case-study" ? "Ca
   <div class="card__body">
     {!p.image && <span class="eyebrow" style="padding-top:28px">{kindLabel}</span>}
     <h3 class="h3 card__title"><a href={href}>{p.title}</a></h3>
+    {p.metric && <p class="card__metric">{p.metric}</p>}
     <p>{p.summary}</p>
     <ul class="tags">
       {p.tags.slice(0, 3).map((t) => <li class="tag">{t}</li>)}

@@ -6,6 +6,7 @@
  * 2. Extra fields: live URL, tags, kind, image (ready-made for Astro)
  * 3. Keep projects out of Yoast sitemaps and search (the WordPress site has its own Work page)
  * 4. Rebuild the Astro site when content changes (deploy hook in Settings › General)
+ * 5. [hjm_case_studies] shortcode: case study cards for the Case Studies page
  */
 
 // 1. Content type + taxonomy
@@ -42,7 +43,9 @@ add_action( 'init', function () {
     $meta = array(
         'hjm_url'  => 'Live site URL',
         'hjm_tags' => 'Tags, comma separated (e.g. Elementor, Custom PHP)',
-        'hjm_kind' => 'public, nda or case-study',
+        'hjm_kind'     => 'public, nda or case-study',
+        'hjm_case_url' => 'Case study URL (fills the Case Studies page)',
+        'hjm_metric'   => 'Headline result for the case study card (e.g. 62 → 98 PageSpeed)',
     );
 
     foreach ( $meta as $key => $description ) {
@@ -149,3 +152,76 @@ add_action( 'transition_post_status', function ( $new, $old, $post ) {
         hjm_trigger_deploy( $post->ID );
     }
 }, 10, 3 );
+
+// 5. Case study cards: [hjm_case_studies] (optionally [hjm_case_studies limit="3"])
+add_shortcode( 'hjm_case_studies', function ( $atts ) {
+    $atts = shortcode_atts( array( 'limit' => -1 ), $atts, 'hjm_case_studies' );
+
+    $query = new WP_Query( array(
+        'post_type'      => 'hjm_project',
+        'post_status'    => 'publish',
+        'posts_per_page' => (int) $atts['limit'],
+        'orderby'        => array( 'menu_order' => 'ASC', 'date' => 'DESC' ),
+        'meta_query'     => array(
+            array( 'key' => 'hjm_case_url', 'value' => '', 'compare' => '!=' ),
+        ),
+        'no_found_rows'  => true,
+    ) );
+
+    if ( ! $query->have_posts() ) {
+        return '<p class="hjm-cs-empty">New case studies are on the way.</p>';
+    }
+
+    $html  = '<div class="hjm-cs-grid">';
+    $index = 0;
+
+    foreach ( $query->posts as $post ) {
+        $url      = get_post_meta( $post->ID, 'hjm_case_url', true );
+        $metric   = get_post_meta( $post->ID, 'hjm_metric', true );
+        $tags     = array_filter( array_map( 'trim', explode( ',', (string) get_post_meta( $post->ID, 'hjm_tags', true ) ) ) );
+        $terms    = get_the_terms( $post->ID, 'hjm_platform' );
+        $platform = is_array( $terms ) ? implode( ' · ', wp_list_pluck( $terms, 'name' ) ) : '';
+        $external = 0 !== strpos( $url, home_url() ) && 0 !== strpos( $url, '/' );
+        $target   = $external ? ' target="_blank" rel="noopener"' : '';
+        $summary  = has_excerpt( $post ) ? get_the_excerpt( $post ) : wp_trim_words( wp_strip_all_tags( $post->post_content ), 30 );
+        $image    = get_the_post_thumbnail(
+            $post,
+            'large',
+            array(
+                'class'   => 'hjm-cs-img',
+                'loading' => 0 === $index ? 'eager' : 'lazy',
+                'sizes'   => 0 === $index ? '(max-width: 1024px) 100vw, 640px' : '(max-width: 767px) 100vw, 560px',
+            )
+        );
+
+        $html .= '<article class="hjm-cs-card' . ( 0 === $index ? ' is-featured' : '' ) . '">';
+
+        if ( $image ) {
+            $html .= '<a class="hjm-cs-media" href="' . esc_url( $url ) . '"' . $target . ' tabindex="-1" aria-hidden="true">' . $image . '</a>';
+        }
+
+        $html .= '<div class="hjm-cs-body">';
+        $html .= '<span class="hjm-cs-eyebrow">Case study' . ( $platform ? ' · ' . esc_html( $platform ) : '' ) . '</span>';
+        $html .= '<h3 class="hjm-cs-title"><a href="' . esc_url( $url ) . '"' . $target . '>' . esc_html( get_the_title( $post ) ) . '</a></h3>';
+
+        if ( $metric ) {
+            $html .= '<p class="hjm-cs-metric">' . esc_html( $metric ) . '</p>';
+        }
+
+        $html .= '<p class="hjm-cs-summary">' . esc_html( $summary ) . '</p>';
+
+        if ( $tags ) {
+            $html .= '<ul class="hjm-cs-tags">';
+            foreach ( array_slice( $tags, 0, 4 ) as $tag ) {
+                $html .= '<li>' . esc_html( $tag ) . '</li>';
+            }
+            $html .= '</ul>';
+        }
+
+        $html .= '<span class="hjm-cs-more" aria-hidden="true">Read the case study ' . ( $external ? '↗' : '→' ) . '</span>';
+        $html .= '</div></article>';
+        $index++;
+    }
+
+    return $html . '</div>';
+} );

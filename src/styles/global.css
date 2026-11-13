@@ -116,6 +116,9 @@ p{margin:0;text-wrap:pretty}
 .card--dark h3{color:var(--white)}
 .card--dark .tag{background:transparent;border-color:var(--dark-line);color:var(--text-dark)}
 .card--dark .card__media{display:none}
+.card--dark .eyebrow{color:var(--cobalt-dark)}
+.card--dark .card__foot .muted{color:var(--muted-dark)}
+.card__metric{font-weight:600;color:var(--cobalt);font-size:.9375rem}
 .card .kind{position:absolute;top:16px;left:16px;z-index:1}
 .card .kind .tag{background:rgba(255,255,255,.94)}
 
